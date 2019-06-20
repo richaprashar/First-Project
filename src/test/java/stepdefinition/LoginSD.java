@@ -3,13 +3,12 @@ package stepdefinition;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import framework.HomePage;
-import framework.LoginPage;
-import framework.TestRunner;
+import framework.webPages.HomePage;
+import framework.webPages.LoginPage;
 import org.testng.Assert;
 
 /**
- * Created by mohammadmuntakim on 6/9/17.
+ * Created by mohammadmuntakim.
  */
 public class LoginSD {
 
@@ -22,55 +21,55 @@ public class LoginSD {
     }
 
     @When("^I enter (.+) into (username|password|firstname|lastname|mobile number|new password) text fields on home screen$")
-    public void enterDataIntoTextFields(String anyText, String textFields) {
+    public void enterDataIntoTextFields(String value, String textFields) {
 
         switch (textFields) {
             case "username":
-                homePage.enterEmail(anyText);
+                homePage.enterEmail(value);
                 break;
             case "password":
-                homePage.enterPassword(anyText);
+                homePage.enterPassword(value);
                 break;
             case "firstname":
-                homePage.enterFirstName(anyText);
+                homePage.enterFirstName(value);
                 break;
             case "lastname":
-                homePage.enterLastName(anyText);
+                homePage.enterLastName(value);
                 break;
             case "mobile number":
-                homePage.enterMobileNumber(anyText);
+                homePage.enterMobileNumber(value);
                 break;
             case "new password":
-                homePage.enterNewPassword(anyText);
+                homePage.enterNewPassword(value);
                 break;
         }
     }
 
-    @When("^I click on (login|create account) button on home screen$")
+    @When("^I click on (login|submit) button on home screen$")
     public void clickOnLoginButton(String button) {
 
         switch (button) {
             case "login":
                 homePage.clickOnLoginButton();
                 break;
-            case "create account":
+            case "submit":
                 //Implement Create account object
                 break;
         }
     }
 
-    @Then("^I verify that i am an invalid login page$")
+    @Then("^I verify that i am on invalid login page$")
     public void verifyInvalidLoginPage() {
-        Assert.assertEquals(loginPage.getPageHeader(), "Log into Facebook");
-    }
-
-    @Then("^I see number [0-9] in text field$")
-    public void textField(int num) {
-
+        Assert.assertEquals(loginPage.getPageHeader(), "Log Into Facebook");
     }
 
     @Then("^I verify invalid signup error message$")
     public void verifySignUpErrorMessage() {
         Assert.assertEquals(homePage.getErrorMessage(), "Invalid signup");
+    }
+
+    @Then("^I verify that signup button is disable at homepage$")
+    public void verifyDisableSignupButton() {
+        Assert.assertFalse(homePage.isSignupButtonEnable(), "Signup button should be disable");
     }
 }

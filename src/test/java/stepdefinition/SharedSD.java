@@ -12,7 +12,7 @@ public class SharedSD {
 
 	private static WebDriver driver = null;
 
-	@Before
+	@Before("@web")
 	public static void before() {
 
 		ConfigReader configReader = new ConfigReader();
@@ -24,7 +24,7 @@ public class SharedSD {
 		driver.get(configReader.getUrl());
 	}
 
-	@After
+	@After("@web")
 	public static void after() {
 		if (driver != null) {
 			driver.manage().deleteAllCookies();
