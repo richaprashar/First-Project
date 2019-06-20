@@ -19,7 +19,7 @@ Feature: darkSky feature
 
   @darkSky-3
   Scenario: Verify individual day temp timeline
-    Given I am on Darksky Home Page
+    Given I am on darkSky home page
     When  I expand todays timeline
     Then  I verify lowest and highest temp is displayed correctly
 

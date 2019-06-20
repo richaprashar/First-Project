@@ -42,5 +42,11 @@ public class darkSkySD {
     darksky.temperatureValidation();
   }
 
+  @When("^Verify individual day temp timeline$")
+  public void verifyCurrentTimeline()
+  {
+
+  }
+
 
 }

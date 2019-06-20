@@ -50,4 +50,9 @@ public class darkSkyHomePage extends BasePage {
         System.out.println("Current Temperature is " + currentTemp + " which is valid for today's Highest Temp " + high +
                 " and Lowest Temp " + low );
     }
+
+    public void currentTimelineValidation()
+    {
+        
+    }
 }
