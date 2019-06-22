@@ -69,6 +69,7 @@ public class BasePage {
 		selectMonth.selectByIndex(index);
 	}
 
+
 	public boolean isElementEnabled(By locator) {
 		return webAction(locator).isEnabled();
 	}

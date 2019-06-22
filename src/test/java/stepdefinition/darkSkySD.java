@@ -39,14 +39,25 @@ public class darkSkySD {
   @Then("^I verify current temperature is not greater or less then temps from daily timeline$")
   public void validateTemperateValue()
   {
-    darksky.temperatureValidation();
+   darksky.temperatureValidation();
   }
 
-  @When("^Verify individual day temp timeline$")
+  @When("^I expand today's timeline$")
+   public void scrollToWeeklyTemperature() throws InterruptedException
+  {
+     darksky.scrollToDetails();
+     Thread.sleep(100);
+  }
+
+  @Then("^I verify lowest and highest temp is displayed correctly$")
   public void verifyCurrentTimeline()
   {
-
+   darksky.currentTimelineValidation();
   }
-
+  @Then("^I verify timeline is displayed with two hours incremented$")
+  public void timeLineIncrementedCorrectly()
+  {
+     darksky.timeLineIncrement();
+  }
 
 }
