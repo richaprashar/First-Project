@@ -22,6 +22,7 @@ public class darkSkyHomePage extends BasePage {
     private By expandedHighTemp =By.xpath("//div[@class='dayDetails revealed']//span[@class='lowTemp swap']//span[@class='temp']");
     private By tempTimeLine = By.xpath("//div[@class='hours']//span[contains(@class,'hour')]//span[@class]");
 
+
     public void clickOnDarkSkyAPI() {
         clickOn(darkSkyAPI);
     }
@@ -91,20 +92,23 @@ public class darkSkyHomePage extends BasePage {
     }
 
     public void timeLineIncrement(){
-         SimpleDateFormat dateFormat = new SimpleDateFormat("ha");
-         String formattedDate = dateFormat.format(new Date()).toString();
-        Calendar cal = Calendar.getInstance(); // creates calendar
-        cal.add(Calendar.HOUR_OF_DAY, 2); // adds two hour
-        String hour = cal.getTime().toString();
-        System.out.println(hour);
-
+        SimpleDateFormat timeFormat = new SimpleDateFormat("ha" );
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        cal.getTime();
+        cal.add(Calendar.HOUR_OF_DAY,2);
+        String time = timeFormat.format(cal.getTime()).toLowerCase();
+        System.out.println("Current-->" + time);
+        boolean val = true;
+        ArrayList<String> everyTwoHour = new ArrayList<>();
         List<WebElement> timeList = SharedSD.getDriver().findElements(By.xpath("//div[@class='hours']//span[contains(@class,'hour')]//span[@class]"));
         for(WebElement timeElement : timeList)
         {
-            String eachHour = timeElement.getText();
-            System.out.println(eachHour.toUpperCase());
-            
+            everyTwoHour.add(timeElement.getText());
         }
+        System.out.println(everyTwoHour);
+
     }
+
 
 }

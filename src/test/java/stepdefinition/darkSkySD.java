@@ -52,7 +52,8 @@ public class darkSkySD {
   @Then("^I verify lowest and highest temp is displayed correctly$")
   public void verifyCurrentTimeline()
   {
-   darksky.currentTimelineValidation();
+
+    darksky.currentTimelineValidation();
   }
   @Then("^I verify timeline is displayed with two hours incremented$")
   public void timeLineIncrementedCorrectly()
