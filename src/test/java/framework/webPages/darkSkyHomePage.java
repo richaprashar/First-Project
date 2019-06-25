@@ -88,7 +88,6 @@ public class darkSkyHomePage extends BasePage {
             value = true;
         }
         Assert.assertTrue(value,"Displayed and Expended Times matches");
-
     }
 
     public void timeLineIncrement(){
@@ -96,19 +95,28 @@ public class darkSkyHomePage extends BasePage {
         Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
         cal.getTime();
-        cal.add(Calendar.HOUR_OF_DAY,2);
+
         String time = timeFormat.format(cal.getTime()).toLowerCase();
         System.out.println("Current-->" + time);
         boolean val = true;
-        ArrayList<String> everyTwoHour = new ArrayList<>();
-        List<WebElement> timeList = SharedSD.getDriver().findElements(By.xpath("//div[@class='hours']//span[contains(@class,'hour')]//span[@class]"));
+        ArrayList<String> listFromTimeLine = new ArrayList<>();
+        List<WebElement> timeList = SharedSD.getDriver().findElements(By.xpath("//div[@class='hours']//span[@class='hour']//span[@class]"));
         for(WebElement timeElement : timeList)
         {
-            everyTwoHour.add(timeElement.getText());
+            listFromTimeLine.add(timeElement.getText());
         }
-        System.out.println(everyTwoHour);
+       ArrayList<String> everyTwohours =new ArrayList<>();
+        for(int i=0; i<=listFromTimeLine.size()-1;i++)
+        {
+            cal.add(Calendar.HOUR_OF_DAY,2);
+            String forHours = timeFormat.format(cal.getTime()).toLowerCase();
+            everyTwohours.add(forHours);
+        }
+        System.out.println(everyTwohours);
+        System.out.println(listFromTimeLine);
+
+        Assert.assertEquals(everyTwohours,listFromTimeLine,"Passed");
 
     }
-
 
 }
