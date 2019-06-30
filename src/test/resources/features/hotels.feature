@@ -16,6 +16,9 @@ Feature: Hotel feature
       |4 stars |
       |3 stars |
 
-
-
+  @hotelSearch-2
+  Scenario: List of all of hotel within 10 miles radius of airport or downtown
+    Given I am on default locations search result screen
+    Then  I verify system displays all hotels within 10 miles radius of airport
+    And   I verify Hilton Hotel is within radius
 
